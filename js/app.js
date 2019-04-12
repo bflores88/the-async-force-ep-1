@@ -6,6 +6,8 @@ function person4ReqListener() {
 
   let homeworld = convert.homeworld;
 
+  const person4HomeWorldReq = new XMLHttpRequest();
+  person4HomeWorldReq.addEventListener('load', person4HomeWorldReqListener);
   person4HomeWorldReq.open('GET', homeworld);
   person4HomeWorldReq.send();
 }
@@ -20,14 +22,14 @@ function person4HomeWorldReqListener() {
   person4HomeWorld.innerHTML = convertHome.name;
 }
 
-const person4HomeWorldReq = new XMLHttpRequest();
-person4HomeWorldReq.addEventListener('load', person4HomeWorldReqListener);
-
 function person14ReqListener() {
   let convert = JSON.parse(this.responseText);
   person14Name.innerHTML = convert.name;
 
   let species = convert.species.toString();
+
+  const person14SpeciesReq = new XMLHttpRequest();
+  person14SpeciesReq.addEventListener('load', person14SpeciesReqListener);
   person14SpeciesReq.open('GET', species);
   person14SpeciesReq.send();
 }
@@ -41,9 +43,6 @@ function person14SpeciesReqListener() {
   let convertSpecies = JSON.parse(this.responseText);
   person14Species.innerHTML = convertSpecies.name;
 }
-
-const person14SpeciesReq = new XMLHttpRequest();
-person14SpeciesReq.addEventListener('load', person14SpeciesReqListener);
 
 function filmListReqListener() {
   let convert = JSON.parse(this.responseText);
